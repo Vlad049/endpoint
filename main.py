@@ -12,9 +12,8 @@ app = FastAPI()
 async def get_user(
     user_id: int = Path(..., description="ID користувача", examples=[1, 42, 100]),
     timestamp: Optional[str] = Query(None, description="Поточний час (не обов'язково)"),
-    x_client_version: str = Header(..., convert_underscores=False, description="Версія клієнту")
+    x_client_version: str = Header(..., description="Версія клієнту")
 ):
-    
     if timestamp is None:
         timestamp = datetime.now().strftime('%Y-%m-%dT%H:%M:%S.%f')
 
